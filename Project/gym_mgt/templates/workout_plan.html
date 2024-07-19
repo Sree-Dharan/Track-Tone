@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://apis.google.com/js/api.js"></script>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plan</title>
+    <link rel="stylesheet" href="{% static 'css/workout_planstyle.css' %}">
+</head>
+
+<body>
+    <div class="background"></div>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <div class="nav-item">
+                <li><a href="/trainee_dashboard/" class="active">Home</a></li>
+                <li><a href="{% url 'workout_plan' %}">Workout Plan</a></li>
+                <li><a href="{% url 'diet_plan' %}">Diet Plan</a></li>
+                <li><a href="/">Index Page</a></li>
+            </div>
+            <!-- Logout Button -->
+            <li>
+                <form action="/logout/" method="post" class="logout-form">
+                    <!-- CSRF token for form submission security -->
+                    {% csrf_token %}
+                    <!-- Button to submit logout form -->
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Workout Plan</h1>
+        <!-- Display workout plan details here -->
+        {% if workout_plan %}
+        <table class="workout-table">
+            <thead>
+                <tr>
+                    <th>Day of Week</th>
+                    <th>Type of Workout</th>
+                    <th>Exercises List</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plan_detail in workout_plan.workoutplandetail_set.all %}
+                <tr>
+                    <td>{{ plan_detail.day_of_week }}</td>
+                    <td>{{ plan_detail.type_of_workout }}</td>
+                    <td>{{ plan_detail.exercises | linebreaksbr }}</td>
+                    <td>{{ plan_detail.description | linebreaksbr }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        {% else %}
+        <p>No workout plan available.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/diet_planstyle.css' %}">
+</head>
+
+<body>
+    <div class="background"></div>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <div class="nav-links">
+                <li><a href="/trainee_dashboard/" class="active">Home</a></li>
+                <li><a href="{% url 'workout_plan' %}">Workout Plan</a></li>
+                <li><a href="{% url 'diet_plan' %}">Diet Plan</a></li>
+                <li><a href="/">Index Page</a></li>
+            </div>
+            <!-- Logout Button -->
+            <div>
+                <li>
+                    <form action="/logout/" method="post" class="logout-form">
+                        <!-- CSRF token for form submission security -->
+                        {% csrf_token %}
+                        <!-- Button to submit logout form -->
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
+                </li>
+            </div>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Diet Plan</h1>
+        <!-- Display diet plan details here -->
+        {% if diet_plan %}
+        <!-- Displaying diet plan if available -->
+        <table class="diet-table">
+            <!-- Table header -->
+            <thead>
+                <tr>
+                    <th>Day of Week</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Evening</th>
+                </tr>
+            </thead>
+            <!-- Table body -->
+            <tbody>
+                <!-- Loop through each diet plan detail -->
+                {% for plan_detail in diet_plan.dietplandetail_set.all %}
+                <tr>
+                    <!-- Displaying day of the week, morning, afternoon, and evening details -->
+                    <td>{{ plan_detail.day_of_week }}</td>
+                    <td>{{ plan_detail.morning }}</td>
+                    <td>{{ plan_detail.afternoon }}</td>
+                    <td>{{ plan_detail.evening }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Display message if no diet plan is available -->
+        {% else %}
+        <p>No diet plan available.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

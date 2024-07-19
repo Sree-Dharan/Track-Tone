@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>checkout Track Tone</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+</head>
+<body>
+  <form method="post" action="{% url 'checkout' %}">
+    <div class="container">
+        <div class="header">
+            <div class="log" onclick="window.location.href='../../'">
+                <img src="{% static 'images/logo2c.png' %}" alt="" class="logo">
+                <h3 class="title">TRACK TONE</h3>
+            </div>
+            
+            <div class="check-title">
+                CHECK OUT
+            </div>
+
+            <div class="add-more" onclick="window.location.href='../'">
+                Add More!
+            </div>
+            
+        </div>
+
+        <div class="detail-container">
+            <div class="shipment-container">
+                <div class="shipment-detail">
+                    <div class="del-title">Delivery Address</div>
+                    <div class="first-row">
+                        <input type="text" class="input-box" id="name" placeholder="Name" name="name" required>
+    
+                        <input type="text" class="input-box" id="phno" placeholder="Mobile Number" name="phno" required>
+                    </div>
+    
+                    <div class="second-row">
+                        <input type="text" class="input-box" id="flatno" placeholder="Flat No,Block no" name="flatno" required>
+    
+                        <input type="text" class="input-box" id="pincode" placeholder="Pincode" name="pincode" required>
+                    </div>
+    
+                    <div class="third-row">
+                        <textarea  id="ad" cols="   107" rows="10" class="ad" placeholder="Address" name="ad" required></textarea>
+                    </div>
+    
+                    <div class="fourth-row">
+                        <input type="text" class="input-box" id="state" placeholder="State" name="state" required>
+    
+                        <input type="text" class="input-box" id="city" placeholder="City/District" name="city" required>
+                    </div>
+    
+                    <div class="fifth-row">
+                        <input type="text" class="input-box" id="landmark" placeholder="Landmark (Optional)" name="landmark">
+    
+                        <input type="text" class="input-box" id="aphno" placeholder="Alternate Phone (Optional)" name="aphno">
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="btn-container">
+                {% csrf_token %}
+              <a href="{% url 'order_confirmation' %}">
+                <button class="place-order" >Place Order</button>
+              </a>
+            </div>
+            
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Track Tone</p>
+            <nav>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="#about">About</a>
+                <a href="#store-nav">Services</a>
+                <a href="tel:9360353077">Phone</a>
+                <a href="mailto:sreedharan.c@bca.christuniversity.in.com">Mail</a>   
+            </nav>
+        </footer>
+    </div>
+  </form>
+</body>
+</html>

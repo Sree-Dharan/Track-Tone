@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Tone</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <section class="container">
+        <div class="main-container;" style=" width: 100%; height: 880px;">  
+            <video autoplay muted loop>
+                <source src="{% static 'videos/intro2.mp4' %}" class="video1">
+            </video> 
+
+            <div id="wrapper">
+                <div class="nav1">
+                    <div class="logobox">
+                        <img src="{% static 'images/logo2.png' %}" alt="logo" class="logo" width="80px" height="70px">
+                        <h2 class="track-tone">TRACK TONE</h2>
+                    </div>
+                    <div class="nav-items">
+                        
+                        <a class="ltr" href="">Home</a>
+                        <a class="ltr" href="#about">About</a>
+                        <a class="ltr" href="#membership-nav">Membership</a>
+                        <a class="ltr st" href="{% url 'store' %}">Store</a>
+                    </div>
+
+                    <div>
+                        {% if user.is_authenticated %} 
+             
+                        <a href="{% url 'logout' %}">
+                          {% csrf_token %}
+                          <button class="login">Log Out</button>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}">
+                          <button class="login">Login</button>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-text-container">
+                <div class="main-title">TRACK TONE</div>
+                <div class="main-text">Track And Tone Your Shape <br> With Us</div>
+            </div>
+
+            <div class="explore">
+                Explore
+                <div class="arrow" >
+                    <a href="#store-nav" class="dec">
+                        <i class='bx bx-down-arrow arr'></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="store-nav" id="store-nav" style="height: 20px; position: absolute;top: 98%;"></div>
+        </div>
+        
+
+
+        <div class="store-container" id="store-container">
+            <div class="store">Store</div>
+            <div class="description">
+                wanna get started? <br>Start your fitness journey<br> with our top-notch <br> gym wears and gym needs
+            </div>
+            {% csrf_token %}
+            <div class="products">
+                 
+                <div id="1" class="product-container" data-div-id="1">
+                    <img src="{% static 'images/shoe4.png' %}" alt="" class="product-img">
+                </div>
+                <div id="2" class="product-container" data-div-id="2">
+                    <img src="{% static 'images/t-shirt1.png' %}" alt="" class="product-img">
+                </div>
+                <div id="3" class="product-container" data-div-id="3">
+                    <img src= "{% static 'images/treadmill1.png' %}" alt="" class="product-img">
+                </div>
+            
+            </div>
+
+            <div class="see-all">
+                <a href="{% url 'store' %}">
+                   See All!
+                </a>
+            </div>
+
+            <div class="about" id="about" style="height: 20px; position: absolute;top: 66%;"></div>
+            
+        </div>
+        
+
+        <section class="about-section">
+            <div class="about-title">About</div>
+            <div class="about-topic" id="topic1">
+                <h2>Our Mission</h2>
+                <div class="points">
+                    <ul>
+                        <li>To help you become the healthiest, happiest version of yourself </li>
+                        <li>To provide affordable memberships and customized package that would suit every budget</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-topic" id="topic2">
+                <h2>Our Team</h2>
+                <div class="points">
+                    <ul>
+                        <li>Top-notch qualifications and expertise of our trainers</li>
+                        <li>Certified from nationally renowned institutions,guaranteeing their up-to-date expertise</li>
+                        
+                    </ul>
+                                                    
+                </div>
+            </div>
+
+            <div class="about-topic" id="topic3">
+                <h2>Our Facilities</h2>
+                <div class="points">
+                    <ul>
+                        <li>dynamic environment customized to support your fitness journey</li>
+                        <li>wide range of equipment and personalized training programs for all fitness levels and goals</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="membership-nav" id="membership-nav" style="height: 20px; position: absolute;top: 63%;"></div>
+        </section>
+
+        <div class="membership-title">Memberships</div>
+        <div class="memberships" id="memberships">
+
+            <div class="membership">
+                <div class="card">
+                <div class="front">
+                    <h2>Bronze Membership</h2>
+                    <p>₹4000 per 3 months</p>
+                </div>
+                <div class="back">
+                    <h2>Basic Membership</h2>
+                    <p>For strength training</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="membership">
+                <div class="card">
+                <div class="front">
+                    <h2>Silver Membership</h2>
+                    <p>₹5000 per 3 months</p>
+                </div>
+                <div class="back">
+                    <h2>Silver Membership</h2>
+                    <p>For weight loss</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="membership">
+                <div class="card">
+                <div class="front">
+                    <h2>Gold Membership</h2>
+                    <p>₹10000 per year</p>
+                </div>
+                <div class="back">
+                    <h2>Gold Membership</h2>
+                    <p>For strength training <br> Save ₹6000</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="membership">
+                <div class="card">
+                <div class="front">
+                    <h2>Platinum Membership</h2>
+                    <p>₹11000 per year</p>
+                </div>
+                <div class="back">
+                    <h2>Platinum Membership</h2>
+                    <p>For weight loss <br> Save ₹8000</p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Track Tone</p>
+            <nav>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="#about">About</a>
+                <a href="#store-nav">Services</a>
+                <a href="tel:9360353077">Phone</a>
+                <a href="mailto:sreedharan.c@bca.christuniversity.in.com">Mail</a>   
+            </nav>
+        </footer>
+    </section>
+
+<script type="module" src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

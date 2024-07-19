@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Store Track Tone</title>
+    <link rel="stylesheet" href="{% static 'css/storestyle.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+</head>
+<body>
+
+    <nav>
+        <div class="nav-top">
+            <div class="nav-item ">
+                <div class="logo" onclick="window.location.href='../'">
+                    <img src="{% static 'images/logo2c.png' %}" alt="" width="80px" height="70px">
+                    <h2>TRACK TONE</h2>
+                </div>
+                
+            </div>
+    
+            <div class="nav-item">
+                <div class="search">
+                    <input type="text" placeholder="Search" class="search-bar">
+                    <img src="{% static 'images/search.png' %}" alt="" width="20px" height="20px">
+                </div>
+            </div>   
+            
+            <div class="cart-container">
+                <p class="cart-quantity">0</p>
+                <img src="{% static 'images/shopping-cart.gif' %}" alt="" style="width: 60px; height: 60px;" id="cart-image">
+            </div>
+
+            <div class="cart">
+                <h1 class="cart-title">YOUR CART</h1>
+                <div class="cart-content">
+                    <!-- html to be added in card is done in java script -->
+                </div>
+
+                <div class="total">
+                    <!-- html and values of total is modified using js -->
+                </div>
+                <a href="{% url 'checkout' %}" style="text-decoration: none;">
+                  {% csrf_token %}
+                  <button type="button" class="buy-btn" onclick="goToCheckOut()"> PROCEED</button>
+                </a>  
+                <i class='bx bx-x' id="close-cart" style='color:#ffffff'  ></i>
+
+            </div>
+            
+    
+        </div>
+    
+        <div class="nav-bottom">
+            <h3 class="menu-item">FOOTWEAR</h3>
+            <h3 class="menu-item">T-SHIRT</h3>
+            <h3 class="menu-item">TRACK PANT</h3>
+            <h3 class="menu-item">SUPPLEMENT</h3>
+            <h3 class="menu-item">EQUIPMENT</h3>
+
+            <div class="nav-item newarrival">
+                <span class="new-arrival">New Arrivals!</span>
+            </div>
+
+        </div>
+
+        
+    
+    </nav>
+    
+    <div class="slider">
+        <div class="slider-wrapper">
+            <div class="slider-item">
+                <img src="{% static 'images/sports2.png' %}" alt="" class="slider-image">
+                <div class="slider-bg"></div>
+                <h1 class="slider-title">ABROS <br>BLASTER</h1>
+                <h2 class="slider-price">₹1519</h2>
+                <a href="#shoe-head"><h2 class="slider-all">See All</h2><button class="buy-button">BUY NOW!</button></a>
+            </div>
+            <div class="slider-item">
+                <img src="{% static 'images/t-shirt1.png' %}" alt="" class="slider-image shirt">
+                <div class="slider-bg"></div>
+                <h1 class="slider-title">ZEXER <br>MEN</h1>
+                <h2 class="slider-price">₹368</h2>
+                <a href="#t-shirt-head"><h2 class="slider-all">See All</h2><button class="buy-button">Buy!</button></a>
+            </div>
+            <div class="slider-item">
+                <img src="{% static 'images/track1.png' %}" alt="" class="slider-image">
+                <div class="slider-bg"></div>
+                <h1 class="slider-title kraasa">KRAASA SOLID <br>JOGGERS</h1>
+                <h2 class="slider-price">₹599</h2>
+                <a href="#trackpant-head"><h2 class="slider-all">See All</h2><button class="buy-button">Buy!</button></a>
+            </div>
+            <div class="slider-item">
+                <img src="{% static 'images/mbwhey.png' %}" alt="" class="slider-image whey">
+                <div class="slider-bg"></div>
+                <h1 class="slider-title mb" >MUSCLE BLAZE <br> WHEY</h1>
+                <h2 class="slider-price">₹1449</h2>
+                <a href="#supplement-head"><h2 class="slider-all">See All</h2><button class="buy-button">Buy!</button></a>
+            </div>
+            <div class="slider-item">
+                <img src="{% static 'images/treadmill1.png' %}" alt="" class="slider-image tread">
+                <div class="slider-bg"></div>
+                <h1 class="slider-title">TREADMILL</h1>
+                <h2 class="slider-price">₹23999</h2>
+                <a href="#equipment-head"><h2 class="slider-all">See All</h2><button class="buy-button">Buy!</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="products-container">
+        <h1 class="head" id="shoe-head">Footwear</h1>
+        <div class="shoe-container">
+            <!-- products are inserted into the web using html in javascript -->
+        </div>
+
+        <h1 class="head" id="t-shirt-head">T-Shirt</h1>
+        <div class="t-shirt-container">
+             <!-- products are inserted into the web using html in javascript -->
+        </div>
+
+        <h1 class="head" id="trackpant-head">Track Pant</h1>
+        <div class="trackpant-container">
+             <!-- products are inserted into the web using html in javascript -->
+        </div>
+
+        <h1 class="head" id="supplement-head">Supplement</h1>
+        <div class="supplement-container">
+             <!-- products are inserted into the web using html in javascript -->
+        </div>
+
+        <h1 class="head" id="equipment-head">Equipment</h1>
+        <div class="equipment-container">
+             <!-- products are inserted into the web using html in javascript -->
+        </div>
+    </div>
+
+    <script type="module" src="{% static 'js/checkout.js' %}"></script>
+    <script type="module" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

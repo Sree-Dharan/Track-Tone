@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainee Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/trainee_dashboardstyle.css' %}">
+</head>
+
+<body>
+    <div class="background-image"></div>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <div class="nav-links">
+                <li><a href="/trainee_dashboard/" class="active">Home</a></li>
+                <li><a href="{% url 'workout_plan' %}">Workout Plan</a></li>
+                <li><a href="{% url 'diet_plan' %}">Diet Plan</a></li>
+               <li><a href="/">Index Page</a></li>
+            </div>
+            <!-- Logout Button -->
+            <div>
+                <li>
+                    <form action="/logout/" method="post" class="logout-form">
+                        <!-- CSRF token for form submission security -->
+                        {% csrf_token %}
+                        <!-- Button to submit logout form -->
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
+                </li>
+            </div>
+        </ul>
+    </nav>
+    <!-- <div class="background-image"></div> -->
+    <center><div class="profile-container">
+        <div class="profile-heading">
+            <h2>Profile</h2>
+        </div>
+    
+        <div class="profile-content">
+            <center>
+                <div class="profile-img-container">
+                    <img src="{{ user.image.url }}" alt="Profile Image" class="profile-img">
+                </div>
+            </center>
+            
+            <!-- User Details Container -->
+    
+            <div class="user-details-container">
+                <!-- Retrieve and display user information -->
+                <div class="user-details">
+                    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Gender:</strong> {{ user.gender }}</p>
+                    <p><strong>Age:</strong> {{ user.age }}</p>
+                    <p><strong>Phone:</strong> {{ user.phone }}</p>
+                    <p><strong>Height:</strong> {{ user.height }}</p>
+                    <p><strong>Weight:</strong> {{ user.weight }}</p>
+                </div>
+    
+                <div class="membership-container">
+                    <div class="membership-heading">
+                        <h2>Membership Details</h2>
+                    </div>
+                    <div class="membership-content">
+                        <!-- Display membership information here -->
+                        <p><strong>Start Date:</strong> {{ membership.start_date }}</p>
+                        <p><strong>End Date:</strong> {{ membership.end_date }}</p>
+                        <p><strong>Membership Type:</strong> {{ membership.membership_type }}</p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div></center>
+    
+        
+</body>
+
+</html>
